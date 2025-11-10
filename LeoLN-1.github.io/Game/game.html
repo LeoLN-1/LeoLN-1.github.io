@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mei Coin Clicker</title>
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  
+  <div class="intro-screen" id="intro">
+    <img src="WaveIdle.gif" alt="Mei waving" class="intro-gif">
+    <p class="intro-text">video game</p>
+  </div>
+
+  
+  <div class="main" id="main">
+    
+    <div class="top-bar">
+      <p class="counter">Mei Coins: 0</p>
+    </div>
+
+    
+    <button id="shop-btn">Shop</button>
+
+    
+    <div class="shop-sidebar" id="shop">
+      <h2>Shop</h2>
+      <p class="counter">Mei Coins: 0</p>
+      <div class="shop-item" id="upgrade1">Upgrade 1 — +1 per click (Cost: 20)</div>
+      <div class="shop-item" id="upgrade2">Upgrade 2 — +5 per click (Cost: 100)</div>
+      <div class="shop-footer">
+      </div>  
+    </div>
+
+    
+    <div class="game-area">
+      <img id="character-btn" src="wave1.gif" alt="Mei" class="character">
+    </div>
+
+    
+    <div class="textbox hidden" id="textbox"></div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
+
