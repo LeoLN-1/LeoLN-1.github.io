@@ -10,7 +10,7 @@ body {
 
 .main {
   position: relative;
-  background-color: white;
+  background: white;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   width: 1000px;
@@ -24,12 +24,26 @@ body {
   z-index: 1;
 }
 
+.main-inner {
+  background: url("room.png") center/cover no-repeat;
+  flex-grow: 1;
+  margin: 0;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
 .top-bar {
   position: absolute;
   top: 10px;
   left: 20px;
   font-size: 20px;
   font-weight: bold;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 #shop-btn {
@@ -45,6 +59,7 @@ body {
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 10;
 }
 
 #shop-btn:hover {
@@ -68,7 +83,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  z-index: 3;
+  z-index: 15;
 }
 
 .shop-sidebar.show {
@@ -99,13 +114,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .character {
+  position: relative;
   width: 200px;
   height: auto;
   cursor: pointer;
   transition: transform 0.1s ease;
+  top: 200px;
 }
 
 .character:active {
@@ -115,23 +133,40 @@ body {
 .textbox {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(240, 240, 240, 0.95);
-  border-top: 2px solid #ccc;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #d3d3d3;
   border-radius: 15px 15px 0 0;
-  padding: 20px;
-  font-size: 16px;
+  padding: 18px 24px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  text-align: left;
   transition: opacity 0.4s ease, transform 0.3s ease;
-  z-index: 10;
+  z-index: 20;
+}
+
+.textbox::before {
+  content: "💬";
+  font-size: 20px;
+  margin-right: 8px;
+  opacity: 0.8;
 }
 
 .textbox.hidden {
   opacity: 0;
-  transform: translateY(100%);
+  transform: translate(-50%, 100%);
   pointer-events: none;
+}
+
+.textbox:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: #b0b0b0;
+  transition: 0.2s ease;
 }
 
 
@@ -167,4 +202,26 @@ body {
 @keyframes fadeInText {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.decor-item {
+  position: absolute;
+  max-width: 150px;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  opacity: 0;
+  animation: fadeInDecor 1s forwards;
+}
+
+@keyframes fadeInDecor {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#roomPlant { bottom: 40px; left: 60px; }
+#gamingPC { bottom: 60px; right: 100px; }
+#meiStatue { bottom: 30px; left: 300px; }
+
+.shop-item.hidden {
+  display: none;
 }
