@@ -14,7 +14,7 @@ let messages = [], currentMessageIndex = 0, isTyping = false, autoNextTimer = nu
 let clickCooldown = false;
 let headpatPlaying = false;
 
-const idleGif = "assets/Idle.gif";
+const idleGif = "assets/idle.gif";
 const headpatGif = "assets/headpat.gif";
 const headpatDuration = 450;
 const clickCooldownTime = 200;
