@@ -10,10 +10,8 @@
     border: 1px solid #999;
 }
 
-
-
-
 body {
+  caret-color: transparent;
   background: transparent;
   font-family: monospace, calibri, Verdana, Arial, Helvetica, sans-serif;
   font-size: 17px;
@@ -24,6 +22,7 @@ body {
   margin-bottom: 80px;
   letter-spacing: 1px;
   background-color: steelblue;
+  overflow-x: hidden
 }
 
 
@@ -129,16 +128,22 @@ iframe {
 }
 
 .secret {
-  text-decoration: none;
-  color: steelblue;
-  position: absolute;
-  display: block;
-  left: 0px;
-  top: 162%; /* change this to make the secret thingy button go up or down */
-  margin-top: 8px;
-  font-size: 8px;
-  mask-image: linear-gradient(to right, black 70%, transparent 100%);
-  z-index: 50;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .secret {
+    text-decoration: none;
+    color: steelblue;
+    position: absolute;
+    display: block;
+    left: 0px;
+    top: 162%; /* change this to make the secret thingy button go up or down */
+    margin-top: 8px;
+    font-size: 8px;
+    mask-image: linear-gradient(to right, black 70%, transparent 100%);
+    z-index: 50;
+  }
 }
 
 .title2 {
@@ -302,7 +307,6 @@ a.schedule_link:hover {
     background-attachment: fixed;
   }
 
-  /* Hide animated background container */
   .container {
     display: none !important;
   }
@@ -310,111 +314,124 @@ a.schedule_link:hover {
 }
 /* -----------animated background------------- */
 
-
-
-.moving-axolotl {
-  position: absolute;
-  opacity: 0.6;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
+.axolotl1, .axolotl2, .axolotl3,
+.axolotl4, .axolotl5, .axolotl6 {
+  display: none;
 }
 
-.axolotl1 {
-  width: 130px;
-  height: 130px;
-  animation: floatLeft1 50s ease-in-out infinite, rotate 60s linear infinite;
-  opacity: 0.7;
-}
+@media (min-width: 1024px) {
+  .moving-axolotl {
+    position: absolute;
+    opacity: 0.6;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
 
-.axolotl2 {
-  width: 90px;
-  height: 90px;
-  animation: floatLeft2 55s ease-in-out infinite, rotate 55s linear infinite;
-  opacity: 0.5;
-}
+  .axolotl1, .axolotl2, .axolotl3,
+  .axolotl4, .axolotl5, .axolotl6 {
+    display: block;
+    position: absolute;
+  }
 
-.axolotl3 {
-  width: 200px;
-  height: 200px;
-  animation: floatLeft3 65s ease-in-out infinite, rotate 75s linear infinite;
-  opacity: 0.4;
-}
+  .axolotl1 {
+    width: 130px;
+    height: 130px;
+    animation: floatLeft1 50s ease-in-out infinite, rotate 60s linear infinite;
+    opacity: 0.7;
+  }
+
+  .axolotl2 {
+    width: 90px;
+    height: 90px;
+    animation: floatLeft2 55s ease-in-out infinite, rotate 55s linear infinite;
+    opacity: 0.5;
+  }
+
+  .axolotl3 {
+    width: 200px;
+    height: 200px;
+    animation: floatLeft3 65s ease-in-out infinite, rotate 75s linear infinite;
+    opacity: 0.4;
+  }
 
 
-.axolotl4 {
-  width: 180px;
-  height: 180px;
-  animation: floatRight1 60s ease-in-out infinite, rotate 70s linear infinite;
-  opacity: 0.6;
-}
+  .axolotl4 {
+    width: 180px;
+    height: 180px;
+    animation: floatRight1 60s ease-in-out infinite, rotate 70s linear infinite;
+    opacity: 0.6;
+  }
 
-.axolotl5 {
-  width: 100px;
-  height: 100px;
-  animation: floatRight2 50s ease-in-out infinite, rotate 50s linear infinite;
-  opacity: 0.5;
-}
+  .axolotl5 {
+    width: 100px;
+    height: 100px;
+    animation: floatRight2 50s ease-in-out infinite, rotate 50s linear infinite;
+    opacity: 0.5;
+  }
 
-.axolotl6 {
-  width: 240px;
-  height: 240px;
-  animation: floatRight3 70s ease-in-out infinite, rotate 80s linear infinite;
-  opacity: 0.3;
-}
+  .axolotl6 {
+    width: 240px;
+    height: 240px;
+    animation: floatRight3 70s ease-in-out infinite, rotate 80s linear infinite;
+    opacity: 0.3;
+  }
 
-/* ---------- LEFT MOVEMENTS ---------- */
-@keyframes floatLeft1 {
-  0%   { top: 10%; left: 5%; }
-  25%  { top: 20%; left: 25%; }
-  50%  { top: 65%; left: 15%; }
-  75%  { top: 50%; left: 35%; }
-  100% { top: 10%; left: 5%; }
-}
 
-@keyframes floatLeft2 {
-  0%   { top: 70%; left: 10%; }
-  25%  { top: 40%; left: 20%; }
-  50%  { top: 30%; left: 5%; }
-  75%  { top: 80%; left: 25%; }
-  100% { top: 70%; left: 10%; }
-}
+  @keyframes floatLeft1 {
+    0%   { top: 8%;  left: 4%; }
+    17%  { top: 22%; left: 10%; }
+    39%  { top: 12%; left: 6%; }
+    63%  { top: 30%; left: 14%; }
+    82%  { top: 18%; left: 3%; }
+    100% { top: 8%;  left: 4%; }
+  }
 
-@keyframes floatLeft3 {
-  0%   { top: 30%; left: 15%; }
-  25%  { top: 10%; left: 30%; }
-  50%  { top: 70%; left: 10%; }
-  75%  { top: 60%; left: 25%; }
-  100% { top: 30%; left: 15%; }
-}
+  @keyframes floatLeft2 {
+    0%   { top: 55%; left: 7%; }
+    14%  { top: 48%; left: 15%; }
+    27%  { top: 62%; left: 5%; }
+    51%  { top: 45%; left: 12%; }
+    76%  { top: 68%; left: 10%; }
+    100% { top: 55%; left: 7%; }
+  }
 
-/* ---------- RIGHT MOVEMENTS ---------- */
-@keyframes floatRight1 {
-  0%   { top: 20%; left: 65%; }
-  25%  { top: 10%; left: 85%; }
-  50%  { top: 60%; left: 75%; }
-  75%  { top: 40%; left: 90%; }
-  100% { top: 20%; left: 65%; }
-}
+  @keyframes floatLeft3 {
+    0%   { top: 80%; left: 12%; }
+    23%  { top: 92%; left: 18%; }
+    47%  { top: 70%; left: 4%; }
+    71%  { top: 78%; left: 14%; }
+    100% { top: 60%; left: 12%; }
+  }
 
-@keyframes floatRight2 {
-  0%   { top: 75%; left: 60%; }
-  25%  { top: 55%; left: 85%; }
-  50%  { top: 35%; left: 70%; }
-  75%  { top: 80%; left: 90%; }
-  100% { top: 75%; left: 60%; }
-}
 
-@keyframes floatRight3 {
-  0%   { top: 40%; left: 75%; }
-  25%  { top: 20%; left: 60%; }
-  50%  { top: 70%; left: 85%; }
-  75%  { top: 60%; left: 65%; }
-  100% { top: 40%; left: 75%; }
-}
+  @keyframes floatRight1 {
+    0%   { top: 12%; left: 88%; }
+    19%  { top: 18%; left: 95%; }
+    43%  { top: 9%;  left: 76%; }
+    67%  { top: 26%; left: 85%; }
+    100% { top: 12%; left: 90%; }
+  }
 
-/* Gentle slow rotation */
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  @keyframes floatRight2 {
+    0%   { top: 50%; left: 90%; }
+    11%  { top: 55%; left: 97%; }
+    34%  { top: 42%; left: 85%; }
+    59%  { top: 65%; left: 80%; }
+    83%  { top: 48%; left: 92%; }
+    100% { top: 50%; left: 90%; }
+  }
+
+  @keyframes floatRight3 {
+    0%   { top: 78%; left: 92%; }
+    22%  { top: 72%; left: 80%; }
+    46%  { top: 70%; left: 65%; }
+    71%  { top: 82%; left: 78%; }
+    100% { top: 78%; left: 92%; }
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
 }

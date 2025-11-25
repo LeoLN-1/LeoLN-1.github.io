@@ -7,42 +7,34 @@
   <link rel="stylesheet" href="game.css">
 </head>
 <body>
-  
+
   <div class="intro-screen" id="intro">
-    <img src="WaveIdle.gif" alt="Mei waving" class="intro-gif">
+    <img src="assets/WaveIdle.gif" alt="Mei waving" class="intro-gif">
     <p class="intro-text">video game</p>
   </div>
 
-  
   <div class="main" id="main">
     <div class="main-inner">
-    <div class="top-bar">
-      <p class="counter">Mei Coins: 0</p>
-    </div>
+      <div class="game-area">
+        <img id="character-btn" src="assets/Wave1.gif" alt="Mei" class="character">
+      </div>
 
-    
-    <button id="shop-btn">Shop</button>
+      <div class="top-bar">
+        <p class="counter">Mei Coins: 0</p>
+      </div>
 
-    
-    <div class="shop-sidebar" id="shop">
-      <h2>Shop</h2>
-      <p class="counter">Mei Coins: 0</p>
-      <div class="shop-footer">
-      </div>  
-    </div>
+      <button id="shop-btn">Shop</button>
 
-    
-    <div class="game-area">
-      <img id="character-btn" src="Wave1.gif" alt="Mei" class="character">
-    </div>
+      <div class="shop-sidebar" id="shop">
+        <h2>Shop</h2>
+        <p class="counter">Mei Coins: 0</p>
+        <div class="shop-footer"></div>
+      </div>
 
-    
-    <div class="textbox hidden" id="textbox"></div>
+      <div class="textbox hidden" id="textbox"></div>
     </div>
   </div>
 
   <script src="game.js"></script>
 </body>
 </html>
-
-
