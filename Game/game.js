@@ -40,7 +40,8 @@ const upgrades = {
   shelf: { name: "Shelf", cost: 15000, bonusClick: 25, bonusAuto: 15, type: "decor", oneTime: true, image: "assets/shelf.png", purchased: false },
   fumos: { name: "Fumos", cost: 25000, bonusClick: 35, bonusAuto: 25, type: "decor", oneTime: true, image: "assets/fumos.png", purchased: false },
   aquariumUpgrade: { name: "Aquarium Upgrade", cost: 35000, bonusClick: 35, bonusAuto: 25, type: "decorReplace", oneTime: true, image: "assets/aquarium2.png", replaces: "aq1", purchased: false },
-  wallPicture: { name: "Picture", cost: 50000, bonusClick: 50, bonusAuto: 35, type: "decor", oneTime: true, image: "assets/picture.png", purchased: false },
+  pufferfish: {name: "Spotted Congor Pufferfish", cost: 20000, bonusClick: 30, bonusAuto: 20, type: "decor", oneTime: true, image: "assets/pufferfish.png", purchased: false },
+  wallPicture: { name: "Picture", cost: 50000, bonusClick: 50, bonusAuto: 35, type: "decor", oneTime: true, images: ["assets/picture1.png", "assets/picture2.png", "assets/picture3.png"], finalImage: null, purchased: false },
   sillyCat: { name: "Silly Cat", cost: 75000, bonusClick: 80, bonusAuto: 50, type: "decor", oneTime: true, image: "assets/sillycat.png", purchased: false },
   bwSet: { name: "Blooming Wings", cost: 125000, bonusClick: 120, bonusAuto: 80, type: "decor", oneTime: true, image: "assets/bws.png", purchased: false },
   meiStatue: { name: "???", cost: 250000, bonusClick: 200, bonusAuto: 100, type: "decor", oneTime: true, image: "assets/statue.png", purchased: false }
@@ -53,6 +54,7 @@ const permanentOrder = [
   "shelf",
   "fumos",
   "aquariumUpgrade",
+  "pufferfish",
   "wallPicture",
   "sillyCat",
   "bwSet",
@@ -75,6 +77,7 @@ function loadData() {
   for (const id of permanentOrder) {
     const u = upgrades[id];
     if (u.purchased) {
+      if (id === "wallPicture" && u.finalImage) u.image = u.finalImage;
       if (u.type === "decorReplace") {
         const oldImg = document.querySelector(`[data-decor="${u.replaces}"]`);
         if (oldImg) oldImg.remove();
@@ -192,6 +195,13 @@ function buyUpgrade(id) {
   else if (u.type === "auto") coinsPerSecond += u.bonus;
 
   else if (u.type === "decor" && u.oneTime && !u.purchased) {
+
+    if (id === "wallPicture") {
+      const index = Math.floor(Math.random() * 3);
+      u.finalImage = u.images[index];
+      u.image = u.finalImage;
+    }
+
     addDecorationImage(u);
     coinsPerClick += u.bonusClick;
     coinsPerSecond += u.bonusAuto;
@@ -248,7 +258,9 @@ characterBtn.addEventListener("click", e => {
 
   if (coins === 1) queueText(["Your first Mei Coin!"]);
   if (coins === 10) queueText(["You’re getting rich!", "Maybe check out the shop."]);
-  if (coins === 50) queueText(["So rich!"]);
+  if (coins === 100) queueText(["So rich!"]);
+  if (coins === 1000) queueText(["You've got enough coins to buy a hotdog"]);
+  if (coins === 5000) queueText(["Now Cal's really mad"]);
   if (coins === 100000) queueText(["You’re crashing the Economy!"]);
   if (coins === 1000000) queueText(["Me Cruel says hi!"]);
 });
