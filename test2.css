@@ -173,6 +173,19 @@ a.schedule_link:hover {
     color: #888;
 }
 
+@media (max-width: 600px) {
+  #navigation a {
+    font-size: 10px !important;
+    letter-spacing: 1px;
+    padding: 2px;
+  }
+  
+  ul {
+    flex-wrap: wrap;
+  }
+}
+
+
 /* -----------animated background--------------- */
 
 
