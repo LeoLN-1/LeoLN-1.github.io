@@ -1,6 +1,6 @@
 body {
   caret-color: transparent;
-  background: steelblue;
+  background: url("assets/background.png") center/cover no-repeat,steelblue;
   font-family: monospace, calibri, Verdana, Arial, Helvetica, sans-serif;
   margin: 0;
   height: 100vh;
@@ -8,6 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   user-select: none;
+  z-index: 5;
 }
 
 .main {
